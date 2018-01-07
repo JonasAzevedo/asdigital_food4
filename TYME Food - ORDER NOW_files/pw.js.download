@@ -1,0 +1,366 @@
+
+var pw_autoscroll = 0;
+var curHeight = 0; 
+
+function paywhirl(action,opts,id){
+
+	console.log("PayWhirl widget "+id+" loaded.");
+
+	if(typeof(opts.autoscroll) !== 'undefined' && action != 'button'){
+		pw_autoscroll = opts.autoscroll;
+	 }  else {
+		pw_autoscroll = 0;
+	 }
+
+	var temp = location.host.split('.').reverse();
+	var root_domain = temp[1] + '.' + temp[0];
+	var scriptTag = document.getElementById(id);
+
+	var loading = document.createElement('img');
+	loading.src="https://app.paywhirl.com/images/loading.gif";
+	loading.style="display:block; margin:auto; margin-bottom:0px;";
+	loading.className="pw_loading";
+	
+	insertAfter(loading,scriptTag);
+
+	if(action=='create'){
+		
+		var iframe = document.createElement('iframe');
+		iframe.id= 'pwframe_'+id;
+		iframe.frameborder= '0';
+		iframe.scrolling = 'no';
+
+		var params = window.location.search.replace("?", "");
+		if(params != ''){
+			var queryString = "&"+params;
+		} else {
+			var queryString = "";
+		}
+
+		if(typeof(opts.multiauth) !== "undefined"){
+			queryString = queryString + '&multiauth='+opts.multiauth;
+		}
+
+		if(typeof(opts.domain) == "undefined"){
+			var domain = opts;
+		} else {
+			var domain = opts.domain;
+		}
+
+		try{
+		  iframe.src='https://'+domain+'.paywhirl.com/login?layout=embed&main_url='+encodeURIComponent(top.location.href)+queryString;
+		} catch(e) {
+		 
+		  iframe.src='https://'+domain+'.paywhirl.com/login?layout=embed';
+		}
+
+		iframe.style.width = '100%';
+		iframe.style.border = '0';
+		iframe.className="paywhirl_frame"; 
+		iframe.style['min-height'] = '800px';
+		
+		insertAfter(iframe,loading);
+		initJQuery(iframe.id);
+	}
+
+	if(action=='widget'){
+
+		var iframe = document.createElement('iframe');
+		iframe.id= 'pwframe_'+id;
+		iframe.frameborder= '0';
+		iframe.className="paywhirl_frame"; 
+		iframe.scrolling = 'no';
+
+		 var params = window.location.search.replace("?", "");
+		if(params != ''){
+			var queryString = "&"+params;
+		} else {
+			var queryString = "";
+		}
+ 
+		 if(typeof(opts.multiauth) !== "undefined"){
+			queryString = queryString + '&multiauth='+opts.multiauth;
+		}
+
+		try{
+			iframe.src='https://'+opts.domain+'.paywhirl.com/widget/'+opts.uuid+'?layout=embed&main_url='+encodeURIComponent(top.location.href)+queryString;
+		} catch(e){
+	 
+			iframe.src='https://'+opts.domain+'.paywhirl.com/widget/'+opts.uuid+'?layout=embed';
+
+		}
+
+		iframe.style.width = '100%';
+		iframe.style.border = '0';
+		iframe.className="paywhirl_frame";
+		iframe.style['min-height'] = '600px';
+
+		insertAfter(iframe,loading);
+
+		initJQuery(iframe.id);
+	}
+
+	if(action=='cart'){
+
+		var iframe = document.createElement('iframe');
+		iframe.id= 'pwframe_'+id;
+		iframe.frameborder= '0';
+		iframe.className="paywhirl_frame"; 
+		iframe.scrolling = 'no';
+
+		 var params = window.location.search.replace("?", "");
+		if(params != ''){
+			var queryString = "&"+params;
+		} else {
+			var queryString = "";
+		}
+ 
+		 if(typeof(opts.multiauth) !== "undefined"){
+			queryString = queryString + '&multiauth='+opts.multiauth;
+		}
+
+		try{
+			iframe.src='https://'+opts.domain+'.paywhirl.com/cart?layout=embed&main_url='+encodeURIComponent(top.location.href)+queryString;
+		}catch(e){
+	 
+			iframe.src='https://'+opts.domain+'.paywhirl.com/cart?layout=embed';
+
+		}
+
+		iframe.style.width = '100%';
+		iframe.style.border = '0';
+		iframe.className="paywhirl_frame";
+		iframe.style['min-height'] = '600px';
+
+		insertAfter(iframe,loading);
+		initJQuery(iframe.id);
+	}
+
+	if(action=='button'){
+	  
+
+		var elements = document.getElementsByClassName('pw_loading');
+		var loadingCounter = 0;
+		while(elements.length > 0){
+			elements[loadingCounter].parentNode.removeChild(elements[loadingCounter]);
+			loadingCounter++;
+		}
+
+		var modal = null;
+
+		//add tingle
+		var stylesheet = document.createElement('link');
+		stylesheet.rel = "stylesheet";
+		stylesheet.type = "text/css";
+		stylesheet.href = 'https://'+opts.domain+'.paywhirl.com/css/tingle.css';
+		insertAfter(stylesheet, scriptTag);
+
+		var script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.async = false;
+		script.src = 'https://'+opts.domain+'.paywhirl.com/js/tingle.js';
+		script.addEventListener('load', function () {
+			if( typeof tingle !== 'undefined' ) {
+				modal = new tingle.modal();
+			} else {
+				setTimeout(function(){
+					modal = new tingle.modal();
+				}, 100);
+			}
+		}, false);
+		insertAfter(script, stylesheet);
+
+		//create button link
+		var buttonLink = document.createElement('a');  
+		buttonLink.href="javascript:void(0);";
+		buttonLink.onclick=function(){
+			if( !modal ) {
+				return;
+			}
+
+			//add widget to modal
+			var iframe = document.createElement('iframe');
+			iframe.id= 'pwframe_'+id;
+			iframe.frameborder= '0';
+			iframe.className="paywhirl_frame"; 
+			iframe.scrolling = 'no';
+			iframe.style.width = '100%';
+			iframe.style.border = '0';
+			iframe.className="paywhirl_frame";
+			iframe.style['min-height'] = '300px';
+
+			modal.setContent(iframe);
+			modal.open();
+
+			iframe.contentWindow.document.open();
+			iframe.contentWindow.document.write('<html><body><img src="https://app.paywhirl.com/images/loading.gif" class="pw_loading" style="display:block; margin:auto; margin-bottom:-130px;" /></body></html>');
+			iframe.contentWindow.document.close();
+
+			var params = window.location.search.replace("?", "");
+			if(params != ''){
+				var queryString = "&"+params;
+			} else {
+				var queryString = "";
+			}
+
+			 if(typeof(opts.multiauth) !== "undefined"){
+				queryString = queryString + '&multiauth='+opts.multiauth;
+			}
+
+			if( opts.subscription_id ) {
+				queryString += '&subscription_id='+opts.subscription_id;
+			}
+
+			try{
+				iframe.src='https://'+opts.domain+'.paywhirl.com/widget/'+opts.uuid+'?layout=embed&main_url='+encodeURIComponent(top.location.href)+queryString;
+			}catch(e){
+				iframe.src='https://'+opts.domain+'.paywhirl.com/widget/'+opts.uuid+'?layout=embed';
+			}
+			
+			setTimeout(function(iframe_id){ 
+				initJQuery(iframe.id);
+			 },100);
+		};
+
+		//create button
+		if(typeof(opts.button_text) !== 'undefined' && typeof(opts.button_text.trim) === 'function' && opts.button_text.trim() !== ''){
+			var button = document.createElement('span');
+			button.innerText = opts.button_text;
+		} else {
+			var button = document.createElement('img');
+			if(typeof(opts.button_image) !== 'undefined' && typeof(opts.button_image.trim) === 'function' && opts.button_image.trim() !== ''){
+				button.src = opts.button_image;
+			} else {
+				button.src = 'https://'+opts.domain+'.paywhirl.com/images/buy_button.png';
+			}
+			button.className = "pw-buy-btn";
+			button.style = "margin:10px; cursor:pointer; max-width:100%;";
+		}
+
+		buttonLink.appendChild(button);
+
+		//add button to page
+		insertAfter(buttonLink,scriptTag);
+	}
+}
+
+function insertAfter(node, referenceNode) {
+  referenceNode.parentNode.insertBefore(node, referenceNode.nextSibling);
+
+}
+
+var jQueryScriptOutputted = false;
+
+function initJQuery(iframe_id) {
+console.log('Checking for jQuery...');
+
+	//if the jQuery object isn't available
+   if(typeof(jQuery) == 'undefined'){
+
+		console.log('jQuery not found loading from CDN.');
+
+		if (! jQueryScriptOutputted) {
+			//only output the script once..
+			jQueryScriptOutputted = true;
+
+			var script = document.createElement('script');
+			script.type='text/javascript';
+			script.async=false;
+			script.src='https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js';
+			//output the script (load it from google api)
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+			console.log('jQuery library loaded.');
+
+			setTimeout(function(iframe_id){ initJQuery(iframe_id); },1000);
+		}
+		
+
+	} else {
+		console.log('jQuery present!');
+		jQuery('.pw_loading').remove(); 
+		function receiveMessage(evt){
+
+			console.log(evt);
+			$frame = jQuery('.paywhirl_frame');
+			$frame.css({'border': '0px' });
+			$frame.attr('frameBorder','0');
+			$frame.attr('ALLOWTRANSPARENCY','true');
+
+			jQuery('iframe').each(function(){
+				var attr = jQuery(this).is("[id]");
+				 var src = jQuery(this).is("[src]");
+				if (typeof attr !== typeof undefined && attr !== false && typeof src !== typeof undefined && src !== false) {
+				if(jQuery(this).attr('id') != iframe_id){
+				   if( jQuery(this).attr('src').indexOf("paywhirl") >= 0 ){
+					
+						jQuery(this).attr('id',iframe_id);
+						jQuery(this).css({'border': '0px' });
+					}
+				   }
+				} else {
+					var src = jQuery(this).is("[src]");
+				if ( typeof src !== typeof undefined && src !== false) {
+					if( jQuery(this).attr('src').indexOf("paywhirl") >= 0 ){
+					
+						jQuery(this).attr('id',iframe_id);
+						jQuery(this).css({'border': '0px' });
+					}
+				}
+				}
+			});
+
+			console.log(evt);
+			if(evt.data == 'scroll'){
+				
+				if(pw_autoscroll != 0 && (typeof pw_autoscroll !== "undefined")){
+					console.log('pw_autoscroll: '+pw_autoscroll);
+					var position = $frame.offset();
+					var windowHeight = jQuery(window).height();
+					var scrollTo = position.top - ( pw_autoscroll > 1 ? pw_autoscroll : 60 );
+
+					try{
+						var top_url = top.location.href;
+						jQuery('html, body').animate({scrollTop:scrollTo}, 'slow');
+					}catch(e){
+						jQuery('html, body').animate({scrollTop:scrollTo}, 'slow');
+					}
+					
+				}
+				 setTimeout(function(){ jQuery('.pw_loading').remove(); },1000);
+
+			} else if( evt.data > 0 ) {
+				
+				var lastHeight = 0;
+				curHeight = evt.data;
+
+				if (  curHeight > 0) {
+					console.log('Adjusting widget to '+curHeight+'px');
+
+						jQuery('.paywhirl_frame').css({'height': (curHeight) + 'px'} );
+				   
+					console.log('Widget resized to '+curHeight+'px');
+				}
+				jQuery('.pw_loading').remove(); 
+				setTimeout(function(){
+					jQuery('.paywhirl_frame').css({'height': (curHeight) + 'px'} );
+				},10);
+
+				 setTimeout(function(){ jQuery('.pw_loading').remove(); },1000);
+
+			   var elements = document.getElementsByClassName('pw_loading');
+				var loadingCounter = 0;
+				while(elements.length > 0){
+					elements[loadingCounter].parentNode.removeChild(elements[loadingCounter]);
+					loadingCounter++;
+				}
+								
+			}
+			jQuery('.pw_loading').remove();
+		}
+		if(window.addEventListener){
+		   window.addEventListener('message', receiveMessage, false);
+		} else {
+			window.attachEvent('onmessage', receiveMessage);
+		}
+	}
+}

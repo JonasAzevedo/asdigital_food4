@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)https://tyme-food-42e3.paywhirl.com/widget/033b9765-0939-4a6d-842c-c672e46110a3 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript" src="./e7462a1627"></script><script src="./nr-1071.min.js.download"></script><script async="" src="./analytics.js.download"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(){}function o(e,t,n){return function(){return i(e,[f.now()].concat(u(arguments)),t?null:this,n),t?void 0:this}}var i=e("handle"),a=e(2),u=e(3),c=e("ee").get("tracer"),f=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,t){s[t]=o(d+t,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,o="function"==typeof t;return i(l+"tracer",[f.now(),e,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return t.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],n),e}finally{c.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=o(l+t)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,f.now()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(o<0?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],4:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?c(e,u,i):i()}function n(n,r,o,i){if(!d.aborted||i){e&&e(n,r,o);for(var a=t(o),u=m(n),c=u.length,f=0;f<c;f++)u[f].apply(a,r);var p=s[y[n]];return p&&p.push([b,n,r,a]),a}}function l(e,t){v[e]=m(e).concat(t)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(n)}function g(e,t){f(e,function(e,n){t=t||"feature",y[n]=t,t in s||(s[t]=[])})}var v={},y={},b={on:l,emit:n,get:w,listeners:m,context:t,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",c=e("gos"),f=e(2),s={},p={},d=t.exports=o();d.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=h.info=NREUM.info,t=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return s.abort();f(y,function(t,n){e[t]||(e[t]=n)}),c("mark",["onload",a()+h.offset],null,"api");var n=d.createElement("script");n.src="https://"+e.agent,t.parentNode.insertBefore(n,t)}}function o(){"complete"===d.readyState&&i()}function i(){c("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),c=e("handle"),f=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=t.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>	
+<title> TYME Food   -  Choose Meals  </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+<link rel="shortcut icon" href="https://d857kzhfeu0ko.cloudfront.net/images/favicon.png" type="image/vnd.microsoft.icon">
+<link rel="icon" type="image/png" href="https://d857kzhfeu0ko.cloudfront.net/images/favicon.png"> 
+<meta name="msapplication-config" content="none">
+<meta property="og:title" content="Recurring Payments and Subscriptions -  Choose Meals  - PayWhirl">
+<meta property="og:image" content="https://d857kzhfeu0ko.cloudfront.net/images/paywhirl_shell.png">
+<meta property="og:site_name" content="Paywhirl">
+<meta property="og:description" content="Accepting recurring payments and subscriptions on your website in minutes! Just setup your plans and paste the PayWhirl widget into your website.">
+
+<!-- stylesheets -->
+<link rel="stylesheet" type="text/css" href="./app.min.css">
+
+<style type="text/css" media="screen">
+    #code_editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+
+<script src="./jquery.min.js(1).download"></script>
+
+<!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<![endif]-->
+
+<script>
+var zips = [11201, 11205, 11215, 11217, 11231,11211,11222, 11220,11232,11206, 11221, 11237,10026, 10027, 10030, 10037, 10039,10001, 10011, 10018, 10019, 10020, 10036,10029, 10035,10010, 10016, 10017, 10022,10012, 10013, 10014,10004, 10005, 10006, 10007, 10038, 10280,10002, 10003, 10009,10021, 10028, 10044, 10065, 10075, 10128,10023, 10024, 10025,10031, 10032, 10033, 10034, 10040,11101, 11102, 11103, 11104, 11105, 11106];
+$(function(){
+  $('input[name=zip]').change(function(){
+	var currentVal = $(this).val();	
+	if(!$.inArray(currentVal, zips)){
+	   $('.checkout_button').prop('disabled',true);
+	} else {
+	   $('.checkout_button').prop('disabled',false);
+	  }
+	});
+});
+</script>
+<script type="text/javascript">
+window.pwtrans = {
+  'table_export_csv': "Export to CSV"
+}
+</script>
+
+<style>
+#signin.clear{
+      background: transparent !important;
+    }
+body{
+  background: transparent !important;
+}
+.navbar{
+  z-index:999;
+}
+.bottom-wrapper .message{
+  color:#2a2a2a !important;
+}
+ .bottom-wrapper .message a{
+  color:#428bca !important; 
+}
+@media(max-width:600px){
+.row .text-center{
+  padding-left:0px;
+  padding-right:0;
+  margin-left:0px;
+  margin-right:0px;
+
+}
+.row{
+  margin-left:0px;
+  margin-right:0px;
+}
+}
+
+.panel.panel-pricing h3{
+  color:#fff !important;
+}
+*:not(html) {
+    -webkit-transform: translate3d(0, 0, 0);
+}
+</style>
+<style type="text/css">
+.btn-primary,.btn-primary:hover,.btn-primary:active,.btn-primary[disabled]{
+	background: #e63d8f !important;
+	color: #ffffff !important;
+}
+
+.btn-success,.btn-success:hover,.btn-success:active,.btn-success[disabled]{
+	background: #76b852 !important;
+	color: #ffffff !important;
+}
+
+.navbar-default{
+	border:0;
+	background: #f8f8f8 !important;
+}
+
+.navbar-default .navbar-nav>li>a{
+	color: #777777 !important;
+}
+
+.navbar-default .navbar-nav>.active>a{
+	background: #e7e7e7 !important;
+	color: #555555 !important;
+}
+
+h1,h2,h3,h4,
+#dashboard .metrics .metric .data,
+table.dataTable thead th{
+	color: #e63d8f !important;
+}
+
+#content .menubar,
+.main-sidebar .menu-section ul li a.active{
+	background: #e63d8f !important;
+}
+
+h1 i,h2 i, h3 i{
+	color: #e63d8f !important;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th{
+	background: #f1f7fb !important;
+}
+
+</style>
+<script async="" src="./hotjar-499878.js.download"></script><script async="" src="./modules-526d80f8c01454f84b75838f21c8706e.js.download"></script><style type="text/css">iframe#_hjRemoteVarsFrame {display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;}</style></head>
+<body id="" class="" style="width:1px;min-width:100%;">
+
+
+
+
+
+
+	<style type="text/css">
+@import  url("https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
+
+.panel-pricing {
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  overflow-x:hidden;
+}
+.panel-pricing:hover {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+}
+.panel-pricing .panel-heading {
+  padding: 20px 10px;
+}
+.panel-pricing .panel-heading .fa {
+  margin-top: 10px;
+  font-size: 58px;
+}
+.panel-pricing .list-group-item {
+  color: #777777;
+  border-bottom: 1px solid rgba(250, 250, 250, 0.5);
+  font-size:15px;
+   word-wrap: break-word;
+}
+.panel-pricing .list-group-item:last-child {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.panel-pricing .list-group-item:first-child {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+.panel-pricing .panel-body {
+  background-color: #f0f0f0;
+  font-size: 30px;
+  color: #777777;
+  padding: 10px;
+  margin: 0px;
+}
+
+#plans{
+max-width:1100px;
+margin:auto;
+}
+
+</style>
+<style type="text/css">
+
+</style>
+
+
+
+    
+    
+
+
+    <script>
+
+    function submitAll(plan){
+      $('.submit_button').replaceWith("..........");
+
+      if(plan == 'false'){
+        var element = '.qty';
+      } else {
+        var element = '#qty_'+plan;
+      }
+
+      $(element).each(function(){
+        if($(this).val() > 0){
+          var planid = $(this).attr('data-planid');
+          var params = {};
+          params.type=$(this).attr('data-type');
+          params.sku=$(this).attr('data-sku');
+          params.amount=$(this).attr('data-price');
+          params.description=$(this).attr('data-title');
+          params.qty = $(this).val();
+          params.enable_quantity = $(this).closest('form').find('input[name=enable_quantity]').val();
+          params.just_add = 1;
+
+          $.ajax({
+            type: 'POST',
+            url: "/add-to-cart?gateway=14249",
+            data: params,
+            async: false
+          });
+        }
+      });
+
+              window.location.href = "/cart?gateway=14249";
+          }
+
+
+    function selectPlan(counter){
+      var qty = $('#qty_'+counter).val();
+      if(qty < 1){
+        $('#qty_'+counter).val(1);
+        qty = 1;
+      }
+
+      $('#add_cart_'+counter).submit();
+    }
+
+   
+
+    //plugin bootstrap minus and plus
+    //http://jsfiddle.net/laelitenetwork/puJ6G/
+    $('.btn-number').click(function(e){
+        e.preventDefault();
+
+        fieldName = $(this).attr('data-field');
+        type      = $(this).attr('data-type');
+        var input = $("input[name='"+fieldName+"']");
+        var currentVal = parseInt(input.val());
+        if (!isNaN(currentVal)) {
+            if(type == 'minus') {
+                if(currentVal > input.attr('min')) {
+                    input.val(currentVal - 1).change();
+                }
+                if(parseInt(input.val()) == input.attr('min')) {
+                    $(this).attr('disabled', true);
+                }
+            } else if(type == 'plus') {
+                if(currentVal < input.attr('max')) {
+                    input.val(currentVal + 1).change();
+                }
+                if(parseInt(input.val()) == input.attr('max')) {
+                    $(this).attr('disabled', true);
+                }
+            }
+        } else {
+            input.val(0);
+        }
+    });
+    $('.input-number').focusin(function(){
+       $(this).data('oldValue', $(this).val());
+    });
+    $('.input-number').change(function() {
+        minValue =  parseInt($(this).attr('min'));
+        maxValue =  parseInt($(this).attr('max'));
+        valueCurrent = parseInt($(this).val());
+        name = $(this).attr('name');
+        if(valueCurrent >= minValue) {
+            $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+        } else {
+            alert('Sorry, the minimum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+        if(valueCurrent <= maxValue) {
+            $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+        } else {
+            alert('Sorry, the maximum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+    });
+    $(".input-number").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                 // Allow: Ctrl+A
+                (e.keyCode == 65 && e.ctrlKey === true) ||
+                 // Allow: home, end, left, right
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                     // let it happen, don't do anything
+                     return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    </script>
+
+<br style="clear:both;">
+
+
+
+
+
+<!-- javascript -->
+
+<script src="./app.min.js.download"></script>
+
+<script>
+Date.parseDate = function( input, format ){
+  return moment(input,format).toDate();
+};
+Date.prototype.dateFormat = function( format ){
+  return moment(this).format(format);
+};
+window.pw_translations = {
+	"please_wait": "Please Wait..."
+};
+$(function(){
+	$('.activesub').prev('a').addClass('toggle');
+	$('.activesub').slideDown();
+	$.validator.messages.required = "This field is required.";
+});
+</script>
+
+<script>
+$(function(){
+
+		if($.trim($('select.country_select').val()) == ''){
+			$('select.country_select').val('US').change();
+		} 
+	
+});
+</script>
+
+
+<script>
+
+function setHeight(){
+    console.log('Setting height to '+$('body').height()+'px...');
+    window.parent.postMessage( $('body').height() , '*');
+
+}
+
+    setHeight();
+  //  setTimeout('setHeight()',1000);
+    setTimeout('setHeight()',2000);
+        setTimeout('setScroll()',400);
+    
+
+  $(function(){
+    $(window).resize(function(){
+      setTimeout('setHeight()',200);
+    })
+
+     $(window).scroll(function(){
+  //    setTimeout('setHeight()',200);
+    })
+
+  })
+
+  $(window).ready(function(){
+     
+   //   setTimeout('setHeight()',200);
+//$(window).height($(window).height());
+    })
+
+function setScroll(){
+	window.parent.postMessage('scroll', '*');
+}
+
+
+</script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-52470634-7', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+    <!-- Hotjar Tracking Code for app.paywhirl.com -->
+  <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:499878,hjsv:5};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+<input type="hidden" style="display:none;" class="hidden_input">
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"e7462a1627","applicationID":"31208067","transactionName":"MlNWYUNXWUsHAEZfVwsZdVZFX1hWSSddW1kMWHdaX0JFVwoPV0R4El9QUlRC","queueTime":0,"applicationTime":102,"atts":"HhRVFwtNSkU=","errorBeacon":"bam.nr-data.net","agent":""}</script>
+
+<iframe name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" id="_hjRemoteVarsFrame" src="./rcj-99d43ead6bdf30da8ed5ffcb4f17100c.html" style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe><div id="ads"></div></body></html>
