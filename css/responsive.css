@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+
+@charset "utf-8";
+/* CSS Document */
+@media (min-width:320px) and (max-width:767px){
+	.bg-pics img{
+		width: 45%
+	}
+	.navbar-toggle{
+		margin-top: 25px !important;
+	}
+	.navbar-collapse{
+		border: none !important;
+	}
+	.navbar-brand{
+		margin-left: 20px;
+	}
+	.banner-text h1{
+		text-align: center;
+	}
+	.design-back{
+		background: none;
+	}
+}
+
+@media (min-width:768px) and (max-width:990px){
+	
+}
+
+@media (min-width:991px) and (max-width:1200px){
+	
+}
+
+@media (min-width:320px) and (max-width:570px){
+	.navbar-toggle{
+		margin-top: 16px !important;
+	}
+}
+
+
+
+
